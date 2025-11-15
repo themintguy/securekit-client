@@ -7,6 +7,7 @@ import Files from '../pages/Files';
 import Setting from '../pages/Setting';
 import Login from '../Auth/Login';
 import SignUp from '../Auth/SignUp';
+import ResetPassword from '../Auth/ResetPassword';
 
 const MainRoutes = () => {
   return (
@@ -17,9 +18,12 @@ const MainRoutes = () => {
         <Route path="/about" element={<About />} />
         <Route path="/files" element={<Files />} />
         <Route path="/settings" element={<Setting />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<SignUp />} />
         <Route path="*" element={<Error />} />
+
+        {/* Auth */}
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/forgot-password" element={<ResetPassword />} />
       </Routes>
     </>
   );

@@ -1,5 +1,6 @@
 import { FaLock } from "react-icons/fa";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const HeroSection = () => {
 
@@ -46,9 +47,8 @@ const HeroSection = () => {
         </h1>
 
         <p className="mt-6 text-lg md:text-xl text-black/90 dark:text-whitestone/90">
-          🔐 Secure Vault — a first solution to securely upload, store,
-          and manage files with robust end-to-end encryption and API-driven
-          control.
+          🔐 Secure Vault — a first solution to securely upload, store, and
+          manage files with robust end-to-end encryption and API-driven control.
         </p>
 
         <motion.div
@@ -57,10 +57,12 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 1 }}
         >
-          <button className="flex items-center justify-center gap-2 bg-redddd text-whitestone dark:text-black px-7 py-3 rounded-lg font-semibold text-lg shadow-lg shadow-redddd/30 hover:scale-105 hover:shadow-redddd/50 transition-all">
-            Get Started
-            <span aria-hidden="true">&rarr;</span>
-          </button>
+          <Link to={'/login'}>
+            <button className="flex items-center justify-center gap-2 bg-redddd text-whitestone dark:text-black px-7 py-3 rounded-lg font-semibold text-lg shadow-lg shadow-redddd/30 hover:scale-105 hover:shadow-redddd/50 transition-all">
+              Get Started
+              <span aria-hidden="true">&rarr;</span>
+            </button>
+          </Link>
           <button className="bg-transparent border border-black dark:border-whitestone text-black dark:text-whitestone px-5 py-2 rounded-lg font-semibold text-lg hover:bg-black hover:text-whitestone dark:hover:bg-whitestone dark:hover:text-black hover:scale-105 transition-all">
             Explore Docs
           </button>
