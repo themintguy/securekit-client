@@ -112,7 +112,7 @@ const Header: React.FC = () => {
                   <Link
                     onClick={() => setMobileMenuOpen(false)}
                     className="block rounded-md bg-whitestone px-5 py-2.5 text-center text-sm font-medium text-blueee"
-                    to="/register"
+                    to="/signup"
                   >
                     Register
                   </Link>
