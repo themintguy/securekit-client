@@ -20,7 +20,8 @@ const MainRoutes = () => {
         <Route path="/settings" element={<Setting />} />
         <Route path="*" element={<Error />} />
 
-        {/* Auth */}
+
+
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/forgot-password" element={<ResetPassword />} />

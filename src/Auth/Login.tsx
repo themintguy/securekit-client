@@ -48,7 +48,6 @@ const Login = () => {
           </h2>
 
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-            {/* Username / Email */}
             <div className="relative">
               <AiOutlineUser className="absolute top-1/2 left-3 transform -translate-y-1/2 text-greenyy" />
               <input
@@ -66,7 +65,6 @@ const Login = () => {
               )}
             </div>
 
-            {/* Password */}
             <div className="relative">
               <AiOutlineLock className="absolute top-1/2 left-3 transform -translate-y-1/2 text-greenyy" />
               <input
@@ -89,7 +87,6 @@ const Login = () => {
               )}
             </div>
 
-            {/* Forgot Password */}
             <div className="text-right">
               <Link to="/forgot-password">
                 <p className="text-sm text-greenyy hover:underline cursor-pointer">

@@ -40,7 +40,6 @@ const ResetPassword = () => {
         </h2>
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-          {/* Email */}
           <div className="relative">
             <AiOutlineMail className="absolute top-1/2 left-3 transform -translate-y-1/2 text-greenyy" />
             <input
