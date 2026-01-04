@@ -1,1 +1,30 @@
 @import "tailwindcss";
+
+@theme {
+  /* Primary (Structure & Trust) */
+  --color-primary: #1E3A5F;        /* Deep navy */
+  --color-primary-soft: #355F8C;   /* Lighter navy */
+
+  /* Accent (Security / Action) */
+  --color-accent: #22C55E;         /* Green */
+  --color-accent-hover: #16A34A;
+  --color-accent-soft: #DCFCE7;
+
+  /* Backgrounds */
+  --color-bg-main: #F8FAFC;        /* App background */
+  --color-bg-surface: #FFFFFF;    /* Cards / modals */
+  --color-bg-muted: #F1F5F9;       /* Sections */
+
+  /* Text */
+  --color-text-primary: #0F172A;
+  --color-text-secondary: #475569;
+  --color-text-muted: #64748B;
+
+  /* Borders */
+  --color-border: #E2E8F0;
+
+  /* Status */
+  --color-success: #16A34A;
+  --color-error: #DC2626;
+  --color-warning: #F59E0B;
+}
