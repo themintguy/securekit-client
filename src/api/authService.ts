@@ -145,6 +145,7 @@ export const logout = async (): Promise<void> => {
   } catch (error) {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const axiosError = error as AxiosError;
+    throw new Error(axiosError?.message);
     // throw new Error(axiosError?.response?.data?.message || "Logout failed");
   }
 };
