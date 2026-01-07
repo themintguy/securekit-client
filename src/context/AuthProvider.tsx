@@ -22,10 +22,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     void refreshAuth();
-  }, []);
+  }, [refreshAuth]);
 
   const logout = async () => {
-    await api.post("auth/logout");
+    await api.post("v1/auth/logout");
     setIsAuthenticated(false);
     navigate("/login");
   };

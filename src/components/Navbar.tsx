@@ -1,11 +1,29 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import { HiMenu, HiX } from "react-icons/hi";
+import { Link, useNavigate } from "react-router-dom";
+import { HiMenu, HiX, HiOutlineLogin, HiOutlineLogout } from "react-icons/hi";
 import { FaGithub, FaGlobe } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
+import { useAuth } from "../hooks/useAuth";
+import toast from "react-hot-toast";
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const { isAuthenticated, logout } = useAuth();
+    const navigate = useNavigate();
+
+    const handleLogout = async () => {
+        try {
+            await logout();
+            toast.success("Logged out successfully");
+        } catch {
+            toast.error("Failed to logout");
+        }
+    };
+
+    const handleLogin = () => {
+        navigate("/login");
+        setIsOpen(false);
+    };
 
     const internalLinks = [
         { name: "Home", path: "/" },
@@ -53,6 +71,25 @@ const Navbar = () => {
                             {link.icon}
                         </a>
                     ))}
+
+                    {/* Auth Button */}
+                    {isAuthenticated ? (
+                        <button
+                            onClick={handleLogout}
+                            className="flex items-center gap-2 px-4 py-2 rounded-lg bg-error/10 text-error border border-error/20 hover:bg-error/20 transition-all font-medium text-sm"
+                        >
+                            <HiOutlineLogout size={18} />
+                            <span>Logout</span>
+                        </button>
+                    ) : (
+                        <button
+                            onClick={handleLogin}
+                            className="flex items-center gap-2 px-4 py-2 rounded-lg bg-accent text-white hover:bg-accent-hover transition-all font-medium text-sm shadow-sm"
+                        >
+                            <HiOutlineLogin size={18} />
+                            <span>Login</span>
+                        </button>
+                    )}
                 </div>
 
                 {/* Mobile Menu Toggle */}
@@ -104,6 +141,29 @@ const Navbar = () => {
                                 </a>
                             ))}
                         </div>
+
+                        {/* Auth Button */}
+                        <div className="h-px bg-white/10" />
+                        {isAuthenticated ? (
+                            <button
+                                onClick={() => {
+                                    handleLogout();
+                                    setIsOpen(false);
+                                }}
+                                className="flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-error/10 text-error border border-error/20 hover:bg-error/20 transition-all font-medium"
+                            >
+                                <HiOutlineLogout size={20} />
+                                <span>Logout</span>
+                            </button>
+                        ) : (
+                            <button
+                                onClick={handleLogin}
+                                className="flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-accent text-white hover:bg-accent-hover transition-all font-medium shadow-sm"
+                            >
+                                <HiOutlineLogin size={20} />
+                                <span>Login</span>
+                            </button>
+                        )}
                     </motion.div>
                 )}
             </AnimatePresence>

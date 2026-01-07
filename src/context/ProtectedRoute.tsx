@@ -1,5 +1,5 @@
 import { Navigate, useLocation } from "react-router-dom";
-import { useContext, useEffect, type ReactNode } from "react";
+import { useContext, type ReactNode } from "react";
 import { AuthContext } from "./AuthContext";
 
 export const ProtectedRoute = ({ children }: { children: ReactNode }) => {
@@ -8,13 +8,7 @@ export const ProtectedRoute = ({ children }: { children: ReactNode }) => {
 
   if (!auth) throw new Error("authcontext is missing");
 
-  const { isAuthenticated, loading, refreshAuth } = auth;
-
-  useEffect(() => {
-    if (!isAuthenticated && !loading) {
-      void refreshAuth();
-    }
-  }, [isAuthenticated, loading, refreshAuth]);
+  const { isAuthenticated, loading } = auth;
 
   if (loading) return <div>Loading...</div>;
 
@@ -22,7 +16,5 @@ export const ProtectedRoute = ({ children }: { children: ReactNode }) => {
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
 
-
   return children;
-
 }

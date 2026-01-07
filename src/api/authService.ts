@@ -38,9 +38,7 @@ function isErrorWithMessage(data: any): data is { message: string } {
   return data && typeof data === "object" && "message" in data;
 }
 
-export const login = async (
-  credentials: LoginCredentials
-): Promise<LoginResponse & { status: number }> => {
+export const login = async (credentials: LoginCredentials): Promise<LoginResponse & { status: number }> => {
   try {
     const response = await api.post<LoginResponse>(
       "v1/auth/login",
@@ -143,7 +141,7 @@ export const logout = async (): Promise<void> => {
   try {
     await api.post("v1/auth/logout");
   } catch (error) {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+     
     const axiosError = error as AxiosError;
     throw new Error(axiosError?.message);
     // throw new Error(axiosError?.response?.data?.message || "Logout failed");
