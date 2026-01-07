@@ -47,7 +47,7 @@ const Sign = () => {
     e.preventDefault();
     setError(null);
 
-   
+
     const result = signUpSchema.safeParse(formData);
 
     if (!result.success) {
@@ -75,10 +75,10 @@ const Sign = () => {
       });
 
       if (response.status === 200 || response.status === 201) {
-        
-        toast.success('Please check your email to verify your account!');
+
+        toast.success('Account created! Email verification in process (3-5 mins)');
         navigate("/login", {
-          state: { message: "Account created successfully! Please check your email to verify." },
+          state: { message: "Account created successfully! Please check your email to verify. Verification may take 3-5 minutes." },
           replace: true
         });
       } else {
@@ -95,7 +95,7 @@ const Sign = () => {
   return (
     <AuthLayout title="Secure Kit" subtitle="Create your secure account">
       <AuthFormCard onSubmit={handleSubmit}>
-    
+
         <FormInput
           icon={<HiOutlineMail className="text-emerald-400" />}
           type="email"
@@ -143,7 +143,7 @@ const Sign = () => {
           )}
         </div>
 
-  
+
         <FormInput
           icon={<HiOutlineLockClosed className="text-emerald-400" />}
           type={showConfirmPassword ? "text" : "password"}
@@ -166,7 +166,7 @@ const Sign = () => {
           }
         />
 
-    
+
         {error && (
           <div className="bg-red-500/10 border border-red-500/50 text-red-400 px-4 py-3 rounded-lg text-sm">
             {error}
@@ -177,8 +177,15 @@ const Sign = () => {
         <SubmitButton disabled={isLoading}>
           {isLoading ? "Creating Account..." : "Create Secure Account"}
         </SubmitButton>
+        <div className="bg-accent/10 border border-accent/20 rounded-lg px-4 py-3 text-sm text-text-secondary">
+          <p className="flex items-start gap-2">
+            <HiOutlineMail className="text-accent flex-shrink-0 mt-0.5" size={16} />
+            <span>
+              After signup, email verification is in process. Please allow <strong className="text-accent">3-5 minutes</strong> for the verification email to arrive.
+            </span>
+          </p>
+        </div>
 
-  
         <p className="text-center text-text-muted text-sm">
           Already have an account?{" "}
           <Link to="/login" className="text-emerald-400 hover:text-emerald-300 transition-colors pointer-events-auto">

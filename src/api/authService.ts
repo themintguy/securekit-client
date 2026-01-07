@@ -38,9 +38,7 @@ function isErrorWithMessage(data: any): data is { message: string } {
   return data && typeof data === "object" && "message" in data;
 }
 
-export const login = async (
-  credentials: LoginCredentials
-): Promise<LoginResponse & { status: number }> => {
+export const login = async (credentials: LoginCredentials): Promise<LoginResponse & { status: number }> => {
   try {
     const response = await api.post<LoginResponse>(
       "v1/auth/login",

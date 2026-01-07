@@ -45,7 +45,7 @@ const Homepage = () => {
 
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.05)_1px,transparent_0)] bg-[size:32px_32px]" />
 
-        
+
             <motion.div
                 className="absolute top-0 -left-20 w-[32rem] h-[32rem] bg-emerald-400/20 rounded-full blur-3xl pointer-events-none"
                 animate={{ scale: [1, 1.25, 1], opacity: [0.3, 0.5, 0.3] }}
@@ -63,7 +63,7 @@ const Homepage = () => {
                 animate="visible"
                 className="relative z-10 max-w-5xl w-full space-y-16"
             >
-            
+
                 <motion.div variants={itemVariants} className="text-center space-y-6">
                     <h1 className="text-5xl md:text-7xl font-bold tracking-tight">
                         <span style={{ color: "var(--color-accent)" }}>Secure</span>
@@ -76,7 +76,7 @@ const Homepage = () => {
                     </p>
 
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-                        <Link to="/login">
+                        <Link to="/vault">
                             <motion.button
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
@@ -98,7 +98,7 @@ const Homepage = () => {
                 </motion.div>
 
 
-             
+
                 <motion.div variants={itemVariants} className="pt-16">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {features.map((feature, index) => (
