@@ -41,9 +41,6 @@ const UploadFiles = () => {
 
     const handleUpload = async () => {
         if (selectedFiles.length === 0) return;
-
-        // TODO: Implement actual upload logic
-        console.log("Uploading files:", selectedFiles);
         alert(`Uploading ${selectedFiles.length} file(s)...`);
     };
 
@@ -61,7 +58,6 @@ const UploadFiles = () => {
 
             <div className="flex-1 px-4 py-8 pt-32 pb-24">
                 <div className="max-w-4xl mx-auto space-y-8">
-                    {/* Header */}
                     <motion.div
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -75,8 +71,6 @@ const UploadFiles = () => {
                             Securely upload your files with zero-knowledge encryption
                         </p>
                     </motion.div>
-
-                    {/* Upload Area */}
                     <motion.div
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
@@ -119,7 +113,6 @@ const UploadFiles = () => {
                         </div>
                     </motion.div>
 
-                    {/* Selected Files List */}
                     {selectedFiles.length > 0 && (
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
@@ -161,7 +154,6 @@ const UploadFiles = () => {
                                 ))}
                             </div>
 
-                            {/* Upload Button */}
                             <motion.button
                                 whileHover={{ scale: 1.02 }}
                                 whileTap={{ scale: 0.98 }}
