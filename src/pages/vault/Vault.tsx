@@ -132,13 +132,13 @@ const Vault = () => {
     };
 
     return (
-        <div className="pt-10 relative min-h-screen flex flex-col bg-bg-main overflow-hidden text-text-primary">
+        <div className="pt-10 relative min-h-screen flex flex-col bg-bg-main overflow-x-hidden text-text-primary">
             <Navbar />
 
             {/* Subtle grid background */}
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(34,197,94,0.03)_1px,transparent_0)] bg-size-[32px_32px]" />
 
-            <div className="relative z-10 w-full max-w-6xl mx-auto px-4 py-12 space-y-12">
+            <div className="relative z-10 w-full max-w-6xl mx-auto px-4 py-8 md:py-12 space-y-8 md:space-y-12">
                 {/* Header Section */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -150,11 +150,11 @@ const Vault = () => {
                         <HiOutlineLockClosed size={48} />
                     </div>
 
-                    <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
+                    <h1 className="text-3xl md:text-5xl font-bold tracking-tight">
                         Your <span className="text-accent">Secure Vault</span>
                     </h1>
 
-                    <p className="text-lg text-text-secondary max-w-2xl">
+                    <p className="text-base md:text-lg text-text-secondary max-w-2xl px-4">
                         Zero-knowledge encryption ensures your data remains private and secure.
                     </p>
                 </motion.div>
@@ -164,11 +164,11 @@ const Vault = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.2 }}
-                    className="bg-bg-surface rounded-2xl border border-border p-8 shadow-sm"
+                    className="bg-bg-surface rounded-2xl border border-border p-4 md:p-8 shadow-sm"
                 >
                     <div className="flex items-center gap-3 mb-6">
                         <HiOutlineShieldCheck className="text-accent" size={32} />
-                        <h2 className="text-2xl font-bold">How Your Vault is Secured</h2>
+                        <h2 className="text-xl md:text-2xl font-bold">How Your Vault is Secured</h2>
                     </div>
 
                     <div className="space-y-6 text-left">
@@ -176,7 +176,7 @@ const Vault = () => {
                             Your vault uses military-grade encryption to protect your sensitive data. Here's how it works:
                         </p>
 
-                        <div className="grid md:grid-cols-3 gap-6">
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                             {/* Step 1 */}
                             <div className="bg-bg-muted rounded-xl p-6 space-y-3">
                                 <div className="flex items-center gap-2">
@@ -248,7 +248,7 @@ const Vault = () => {
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         onClick={() => navigate("/recovery")}
-                        className="flex items-center gap-2 px-6 py-3 rounded-xl bg-accent/10 text-accent font-semibold hover:bg-accent/20 transition-colors border border-accent/20"
+                        className="flex items-center gap-2 px-6 py-3 rounded-xl bg-accent/10 text-accent font-semibold hover:bg-accent/20 transition-colors border border-accent/20 w-full sm:w-auto justify-center"
                     >
                         <HiOutlineKey size={20} />
                         Manage Recovery Codes
@@ -260,17 +260,17 @@ const Vault = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.4 }}
-                    className="bg-bg-surface rounded-2xl border border-border p-8 shadow-sm"
+                    className="bg-bg-surface rounded-2xl border border-border p-4 md:p-8 shadow-sm"
                 >
-                    <div className="flex items-center justify-between mb-6">
-                        <h2 className="text-2xl font-bold">Your Files</h2>
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 gap-4">
+                        <h2 className="text-xl md:text-2xl font-bold">Your Files</h2>
                         {isVaultUnlocked && (
                             <motion.button
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
                                 onClick={handleShowFiles}
                                 disabled={isLoadingFiles}
-                                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-accent text-white font-semibold hover:bg-accent-hover transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-accent text-white font-semibold hover:bg-accent-hover transition-colors disabled:opacity-50 disabled:cursor-not-allowed w-full sm:w-auto justify-center"
                             >
                                 <HiOutlineEye size={20} />
                                 {isLoadingFiles ? "Loading..." : "Show Files"}
@@ -279,21 +279,21 @@ const Vault = () => {
                     </div>
 
                     {!isVaultUnlocked ? (
-                        <div className="w-full h-64 bg-bg-muted rounded-xl flex items-center justify-center">
+                        <div className="w-full h-64 bg-bg-muted rounded-xl flex items-center justify-center p-4">
                             <div className="text-center space-y-2">
                                 <HiOutlineLockClosed className="mx-auto text-text-muted" size={48} />
                                 <p className="text-text-muted">Please unlock the vault to view your files</p>
                             </div>
                         </div>
                     ) : !showFiles ? (
-                        <div className="w-full h-64 bg-bg-muted rounded-xl flex items-center justify-center">
+                        <div className="w-full h-64 bg-bg-muted rounded-xl flex items-center justify-center p-4">
                             <div className="text-center space-y-2">
                                 <HiOutlineDocumentText className="mx-auto text-text-muted" size={48} />
                                 <p className="text-text-muted">Click "Show Files" to view your encrypted files</p>
                             </div>
                         </div>
                     ) : files.length === 0 ? (
-                        <div className="w-full h-64 bg-bg-muted rounded-xl flex items-center justify-center">
+                        <div className="w-full h-64 bg-bg-muted rounded-xl flex items-center justify-center p-4">
                             <div className="text-center space-y-2">
                                 <HiOutlineDocumentText className="mx-auto text-text-muted" size={48} />
                                 <p className="text-text-muted">No files found in your vault</p>

@@ -186,7 +186,7 @@ const VaultActions = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="bg-bg-surface rounded-2xl border border-border p-8 shadow-sm"
+            className="bg-bg-surface rounded-2xl border border-border p-4 md:p-8 shadow-sm"
         >
             <h2 className="text-2xl font-bold mb-6">Vault Actions</h2>
 

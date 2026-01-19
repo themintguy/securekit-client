@@ -63,37 +63,37 @@ const File = ({ file, index, onDelete }: FileProps) => {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: index * 0.05 }}
-            className="flex items-center justify-between p-4 rounded-xl bg-bg-muted border border-border hover:bg-bg-surface/70 transition-colors"
+            className="flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-xl bg-bg-muted border border-border hover:bg-bg-surface/70 transition-colors gap-4"
         >
-            <div className="flex items-center gap-3 flex-1 min-w-0">
-                <div className="p-2 rounded-lg bg-accent/10">
+            <div className="flex items-start sm:items-center gap-3 flex-1 min-w-0 w-full">
+                <div className="p-2 rounded-lg bg-accent/10 shrink-0">
                     <HiOutlineDocumentText size={24} className="text-accent" />
                 </div>
                 <div className="flex-1 min-w-0">
-                    <p className="font-medium truncate">{file.original_name}</p>
-                    <div className="flex gap-4 text-sm text-text-muted">
+                    <p className="font-medium truncate pr-2">{file.original_name}</p>
+                    <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-text-muted mt-1">
                         <span>{formatFileSize(file.file_size_bytes)}</span>
-                        <span>•</span>
+                        <span className="hidden sm:inline">•</span>
                         <span>{file.mime_type}</span>
-                        <span>•</span>
+                        <span className="hidden sm:inline">•</span>
                         <span>{formatDate(file.uploaded_at)}</span>
                     </div>
                 </div>
             </div>
 
             {/* Action Buttons */}
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 w-full sm:w-auto mt-2 sm:mt-0">
                 {/* Download Button */}
                 <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={handleDownload}
                     disabled={isDownloading || isDeleting}
-                    className="flex items-center gap-2 px-4 py-2 rounded-lg bg-accent/10 text-accent hover:bg-accent/20 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="flex-1 sm:flex-none justify-center flex items-center gap-2 px-4 py-2 rounded-lg bg-accent/10 text-accent hover:bg-accent/20 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                     <HiOutlineDownload size={20} />
                     <span className="text-sm font-semibold">
-                        {isDownloading ? "Downloading..." : "Download"}
+                        {isDownloading ? "..." : "Download"}
                     </span>
                 </motion.button>
 
@@ -103,11 +103,11 @@ const File = ({ file, index, onDelete }: FileProps) => {
                     whileTap={{ scale: 0.95 }}
                     onClick={handleDelete}
                     disabled={isDownloading || isDeleting}
-                    className="flex items-center gap-2 px-4 py-2 rounded-lg bg-error/10 text-error hover:bg-error/20 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="flex-1 sm:flex-none justify-center flex items-center gap-2 px-4 py-2 rounded-lg bg-error/10 text-error hover:bg-error/20 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                     <HiOutlineTrash size={20} />
                     <span className="text-sm font-semibold">
-                        {isDeleting ? "Deleting..." : "Delete"}
+                        {isDeleting ? "..." : "Delete"}
                     </span>
                 </motion.button>
             </div>

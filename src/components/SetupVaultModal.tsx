@@ -50,7 +50,7 @@ const SetupVaultModal = ({ isOpen, onClose, onSubmit }: SetupVaultModalProps) =>
                             animate={{ opacity: 1, scale: 1, y: 0 }}
                             exit={{ opacity: 0, scale: 0.95, y: 20 }}
                             transition={{ duration: 0.2 }}
-                            className="bg-bg-surface rounded-2xl border border-border shadow-2xl w-full max-w-md overflow-hidden"
+                            className="bg-bg-surface rounded-2xl border border-border shadow-2xl w-full max-w-md overflow-hidden max-h-[90vh] flex flex-col"
                         >
                             {/* Header */}
                             <div className="bg-gradient-to-r from-accent/10 to-accent/5 border-b border-border p-6">
@@ -74,7 +74,7 @@ const SetupVaultModal = ({ isOpen, onClose, onSubmit }: SetupVaultModalProps) =>
                             </div>
 
                             {/* Form */}
-                            <form onSubmit={handleSubmit} className="p-6 space-y-5">
+                            <form onSubmit={handleSubmit} className="p-6 space-y-5 overflow-y-auto custom-scrollbar">
                                 {/* Security Questions */}
                                 <div className="space-y-4">
                                     <div className="flex items-center gap-2 text-text-secondary">
